@@ -1,0 +1,132 @@
+name: CI
+on: [push, pull_request, workflow_dispatch]
+env:
+  CARGO_TERM_COLOR: always
+jobs:
+  standalone_regression:
+    # These tests remain runnable while the checked-in workspace is missing modules.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      - name: Check formatting of touched Rust files
+        run: |
+          rustfmt --check --edition 2021 crates/codec-cli/src/digest.rs crates/codec-cli/src/main.rs crates/codec-cli/tests/integration_test.rs crates/codec-core/src/time.rs verification/time_standalone.rs
+      - name: Verify RFC 1321 MD5 test vectors without Cargo workspace metadata
+        run: |
+          rustc --edition 2021 --test crates/codec-cli/src/digest.rs -o /tmp/codec-md5-tests
+          /tmp/codec-md5-tests
+      - name: Verify clock synchronizer tests independently of workspace metadata
+        run: |
+          rustc --edition 2021 --test verification/time_standalone.rs -o /tmp/codec-time-tests
+          /tmp/codec-time-tests
+  source_inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check that all referenced crate, module and fuzz sources are committed
+        run: python3 verification/source_inventory.py
+
+  conformance_harness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: python3 -m unittest discover -s verification -p test_conformance.py -v
+      - name: Record blocked pixel acceptance (must not be mistaken for passing decode)
+        shell: bash
+        run: |
+          set +e
+          python3 verification/conformance.py --report conformance-report.json
+          status=$?
+          test "$status" -eq 2 || exit 1
+          cmp conformance-report.json verification/conformance-report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: compressed-picture-acceptance
+          path: conformance-report.json
+
+  address_sanitizer:
+    needs: source_inventory
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: rust-src
+      # rustdoc does not inherit RUSTFLAGS; it also needs the ASan flag
+      # to link doctests against the instrumented standard library.
+      - name: AddressSanitizer scalar decoding primitives
+        env:
+          RUSTFLAGS: -Z sanitizer=address
+          RUSTDOCFLAGS: -Z sanitizer=address
+        run: cargo +nightly test -Zbuild-std --locked -p codec-av1 -p codec-bitstream -p codec-core --target x86_64-unknown-linux-gnu
+
+  normative_tables:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: AOMediaCodec/av1-spec
+          ref: 5e04f3f75e73a5898d7616c47c52f032144b8f80
+          path: av1-spec-oracle
+      - run: python3 verification/phase1_tables.py av1-spec-oracle
+
+  build_and_test:
+    needs: source_inventory
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: ilammy/msvc-dev-cmd@v1
+        if: runner.os == 'Windows'
+      - run: cargo fmt --all -- --check
+      - run: cargo clippy --locked --workspace --all-targets -- -D warnings
+      - run: cargo test --locked --workspace
+      - run: cargo build --locked --workspace --release
+      - run: cargo test --locked --workspace --release
+      - name: Scalar Differential Path Check (CODEC_SIMD_OFF=all)
+        env:
+          CODEC_SIMD_OFF: all
+        run: cargo test --locked --workspace
+  tsan_concurrency:
+    needs: source_inventory
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: rust-src
+      - name: ThreadSanitizer Wave-Front and DualRef VBI Verification
+        env:
+          RUSTFLAGS: -Z sanitizer=thread
+        run: cargo +nightly test -Zbuild-std --locked --lib --tests -p codec-core -p codec-memory -p codec-av1 --target x86_64-unknown-linux-gnu
+  fuzz_smoke:
+    needs: source_inventory
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly
+      - run: cargo +nightly install cargo-fuzz --version 0.13.2 --locked
+      - run: cargo +nightly fuzz run mp4 -- -max_total_time=30 -max_len=65536
+      - run: cargo +nightly fuzz run av1 -- -max_total_time=30 -max_len=65536
+      - run: cargo +nightly fuzz run av1_settings -- -max_total_time=30 -max_len=65536
+      - run: cargo +nightly fuzz run av1_blocks -- -max_total_time=30 -max_len=4096
+      - run: cargo +nightly fuzz run av1_filters -- -max_total_time=30 -max_len=1024
+      - name: Seed actual picture reconstruction fuzzing
+        run: |
+          mkdir -p fuzz/corpus/av1_picture
+          cp tests/intra_lossless*.obu fuzz/corpus/av1_picture/
+      - run: cargo +nightly fuzz run av1_picture -- -max_total_time=30 -max_len=65536
+      - run: cargo +nightly fuzz run av1_cdf -- -max_total_time=30 -max_len=4096

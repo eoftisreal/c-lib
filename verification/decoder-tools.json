@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "candidate": null,
+  "reference": null,
+  "reference_revision": null,
+  "note": "No independent compressed-picture decoder entry point exists. Replace nulls only when a real c-lib native raw-output adapter is implemented and reviewed.",
+  "full_decoder_fuzz_target": null
+}

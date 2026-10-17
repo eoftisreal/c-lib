@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "scope": "verified lossless intra corpus; does not replace full AV1 acceptance",
+  "cases": [
+    {
+      "id": "intra_lossless_core.obu",
+      "path": "tests/intra_lossless_core.obu",
+      "sha256": "84a795e9dd20384d5d9cbe6a2405c72c056cb1ffdca8bf342c6efabdce88080b",
+      "width": 128,
+      "height": 96,
+      "bit_depth": 8,
+      "layout": "420",
+      "frames": 1,
+      "features": [
+        "lossless-core",
+        "8-bit-420-core",
+        "dc-prediction-core",
+        "nonzero-ac-core",
+        "single-tile-core"
+      ]
+    },
+    {
+      "id": "intra_lossless.obu",
+      "path": "tests/intra_lossless.obu",
+      "sha256": "6d9c69993473587d172038760d32aea146be1324ce4e0f1ba55e0a5101d6d559",
+      "width": 128,
+      "height": 96,
+      "bit_depth": 8,
+      "layout": "420",
+      "frames": 1,
+      "features": [
+        "lossless-palette",
+        "8-bit-420-core",
+        "single-tile-core"
+      ]
+    },
+    {
+      "id": "intra_lossless_palette.obu",
+      "path": "tests/intra_lossless_palette.obu",
+      "sha256": "46229782e78d6ca3697d0e4099f425375bc724c753ae2db19a547cd857281d95",
+      "width": 48,
+      "height": 32,
+      "bit_depth": 8,
+      "layout": "420",
+      "frames": 1,
+      "features": [
+        "lossless-palette",
+        "8-bit-420-core",
+        "single-tile-core"
+      ]
+    },
+    {
+      "id": "intra_lossless_gradient.obu",
+      "path": "tests/intra_lossless_gradient.obu",
+      "sha256": "07e33ead54e9a799032e32d97e3aa2698a37ee34453a54e534169378279900d7",
+      "width": 64,
+      "height": 48,
+      "bit_depth": 8,
+      "layout": "420",
+      "frames": 1,
+      "features": [
+        "lossless-gradient",
+        "8-bit-420-core",
+        "single-tile-core"
+      ]
+    },
+    {
+      "id": "intra_lossless_tiles8.obu",
+      "path": "tests/intra_lossless_tiles8.obu",
+      "sha256": "79c8dfef26505fba6a73ea5170bf9b5ecb8458326ec4e6f91a20ffb50473b7c6",
+      "width": 192,
+      "height": 192,
+      "bit_depth": 8,
+      "layout": "420",
+      "frames": 1,
+      "features": [
+        "lossless-core",
+        "8-bit-420-core",
+        "four-unequal-tiles",
+        "combined-frame"
+      ]
+    },
+    {
+      "id": "intra_lossless_tiles10.obu",
+      "path": "tests/intra_lossless_tiles10.obu",
+      "sha256": "1bff3f0b9eef3bbba405da8bc63d2f983c51808ceb4d3644d9938a75ebeed3b1",
+      "width": 192,
+      "height": 192,
+      "bit_depth": 10,
+      "layout": "420",
+      "frames": 1,
+      "features": [
+        "lossless-core",
+        "10-bit-420-core",
+        "four-unequal-tiles",
+        "four-tile-groups"
+      ]
+    },
+    {
+      "id": "intra_lossless_tiles8_palette.obu",
+      "path": "tests/intra_lossless_tiles8_palette.obu",
+      "sha256": "00236e07acc14b3500d42b3fdb9c7d6d74cb96fc4955f61cf9bf02f9a6834924",
+      "width": 192,
+      "height": 192,
+      "bit_depth": 8,
+      "layout": "420",
+      "frames": 1,
+      "features": [
+        "lossless-core",
+        "8-bit-420-core",
+        "four-unequal-tiles",
+        "four-tile-groups"
+      ]
+    }
+  ]
+}

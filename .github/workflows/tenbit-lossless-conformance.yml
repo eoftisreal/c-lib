@@ -1,0 +1,56 @@
+name: Experimental 10-bit lossless pixel conformance
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  tenbit-lossless:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.99.1
+      - name: Install independent FFmpeg/libaom encoder and reference decoder
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          ffmpeg -hide_banner -encoders | grep -F 'libaom-av1'
+          ffmpeg -hide_banner -decoders | grep -F 'libaom-av1'
+      - name: Generate deterministic native 10-bit test picture
+        run: python3 verification/make_10bit_lossless.py /tmp/source10.yuv
+      - name: Independently encode AV1 with libaom in strictly lossless mode
+        run: |
+          ffmpeg -nostdin -hide_banner -loglevel error \
+            -f rawvideo -pix_fmt yuv420p10le -s 64x64 -r 1 \
+            -i /tmp/source10.yuv -frames:v 1 \
+            -c:v libaom-av1 -cpu-used 0 -crf 0 -b:v 0 -still-picture 1 -aom-params sb-size=64 \
+            -enable-palette 0 -enable-angle-delta 0 -enable-filter-intra 0 \
+            -enable-cdef 0 -enable-restoration 0 -enable-smooth-intra 0 \
+            -enable-paeth-intra 0 -enable-cfl-intra 0 \
+            -f obu -y /tmp/encoded10.obu
+      - name: Confirm reference libaom preserves every source pixel
+        run: |
+          ffmpeg -nostdin -hide_banner -loglevel error -c:v libaom-av1 \
+            -i /tmp/encoded10.obu -frames:v 1 -pix_fmt yuv420p10le \
+            -f rawvideo -y /tmp/reference10.yuv
+          cmp /tmp/source10.yuv /tmp/reference10.yuv
+      - name: Build Rust AV1 decoder and raw-YUV comparator
+        run: cargo build --locked --release -p codec-cli --bin av1-decode --bin yuv-compare
+      - name: Decode and compare all 10-bit Y/U/V samples
+        run: |
+          target/release/av1-decode --input /tmp/encoded10.obu --output /tmp/candidate10.yuv
+          target/release/yuv-compare --expected /tmp/reference10.yuv \
+            --actual /tmp/candidate10.yuv --width 64 --height 64 \
+            --bit-depth 10 --subsampling 420
+      - name: Ensure truncated 10-bit AV1 cannot publish a decoded picture
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          picture = Path("/tmp/encoded10.obu").read_bytes()
+          assert len(picture) > 2
+          Path("/tmp/truncated10.obu").write_bytes(picture[:-2])
+          PY
+          if target/release/av1-decode --input /tmp/truncated10.obu --output /tmp/malformed10.yuv; then
+            echo "ERROR: truncated 10-bit AV1 unexpectedly decoded" >&2
+            exit 1
+          fi
+          test ! -e /tmp/malformed10.yuv
+

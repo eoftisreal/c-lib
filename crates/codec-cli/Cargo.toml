@@ -1,0 +1,22 @@
+[package]
+name = "codec-cli"
+default-run = "codec-cli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+codec-core = { path = "../codec-core" }
+codec-av1 = { path = "../codec-av1" }
+codec-dsl = { path = "../codec-dsl" }
+codec-memory = { path = "../codec-memory" }
+codec-neural = { path = "../codec-neural" }
+container-mp4 = { path = "../container-mp4" }
+clap.workspace = true
+log.workspace = true
+env_logger.workspace = true
+codec-bitstream = { path = "../codec-bitstream" }
+
+[dev-dependencies]
+codec-bitstream = { path = "../codec-bitstream" }

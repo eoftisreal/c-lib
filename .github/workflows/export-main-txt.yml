@@ -1,0 +1,98 @@
+name: One-file repository text export
+
+on:
+  push:
+    branches:
+      - export/c-lib-main-txt-20261015
+    paths:
+      - .github/workflows/export-main-txt.yml
+
+permissions:
+  contents: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Export all files from origin/main into one UTF-8 text file
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import base64
+          import hashlib
+          from pathlib import Path
+          import subprocess
+          import textwrap
+
+          def git(*args):
+              return subprocess.check_output(["git", *args])
+
+          reference = "origin/main"
+          commit = git("rev-parse", reference).decode("ascii").strip()
+          entries = git("ls-tree", "-r", "-z", reference).split(b"\0")
+          output = Path("c-lib-main-repository.txt")
+          total = 0
+          count = 0
+          with output.open("w", encoding="utf-8", newline="\n") as out:
+              out.write("c-lib — Complete Git-tracked Repository Export\n")
+              out.write("Source: https://github.com/eoftisreal/c-lib\n")
+              out.write("Branch: main\nCommit: " + commit + "\n")
+              out.write("Binary files are Base64-encoded to preserve their exact bytes.\n")
+              out.write("Only files tracked by Git in this commit are included.\n")
+              out.write("=" * 90 + "\n\n")
+              for item in entries:
+                  if not item:
+                      continue
+                  metadata, filename = item.split(b"\t", 1)
+                  mode, kind, blob = metadata.decode("ascii").split(" ")
+                  if kind != "blob":
+                      continue
+                  name = filename.decode("utf-8", "surrogateescape")
+                  data = git("cat-file", "blob", blob)
+                  total += len(data)
+                  count += 1
+                  binary = b"\0" in data or name.endswith((".mp4", ".obu"))
+                  if not binary:
+                      try:
+                          decoded = data.decode("utf-8")
+                      except UnicodeDecodeError:
+                          binary = True
+                  out.write("BEGIN REPOSITORY FILE\n")
+                  out.write("Path: " + name + "\n")
+                  out.write("Git mode: " + mode + "\n")
+                  out.write("Byte size: " + str(len(data)) + "\n")
+                  out.write("SHA-256: " + hashlib.sha256(data).hexdigest() + "\n")
+                  out.write("Format: " + ("BASE64 BINARY" if binary else "UTF-8 TEXT") + "\n")
+                  out.write("--- CONTENT START ---\n")
+                  if binary:
+                      base64_text = base64.b64encode(data).decode("ascii")
+                      for line in textwrap.wrap(base64_text, 76):
+                          out.write(line + "\n")
+                  else:
+                      out.write(decoded)
+                      if decoded and not decoded.endswith("\n"):
+                          out.write("\n")
+                  out.write("--- CONTENT END ---\n")
+                  out.write("END REPOSITORY FILE\n\n")
+              out.write("EXPORT FINISHED\n")
+              out.write("Files: " + str(count) + "\n")
+              out.write("Original total bytes: " + str(total) + "\n")
+          print("Exported", count, "files,", total, "original bytes to", output)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: c-lib-main-one-txt
+          path: c-lib-main-repository.txt
+          retention-days: 30
+      - name: Publish text file to export branch
+        continue-on-error: true
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add c-lib-main-repository.txt
+          git commit -m "Export all main files as one TXT [skip ci]"
+          git push origin HEAD:export/c-lib-main-txt-20261015

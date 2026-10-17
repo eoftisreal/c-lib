@@ -1,0 +1,12 @@
+   Compiling codec-fuzz v0.0.0 (/workspace/scratch/2dcc95c9fbaf/c-lib/fuzz)
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.27s
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.01s
+     Running `fuzz/target/x86_64-unknown-linux-gnu/release/mp4 -artifact_prefix=/workspace/scratch/2dcc95c9fbaf/c-lib/fuzz/artifacts/mp4/ -runs=100000 -max_len=65536 -verbosity=0 -print_final_stats=1 /workspace/scratch/2dcc95c9fbaf/c-lib/fuzz/corpus/mp4`
+INFO: Running with entropic power schedule (0xFF, 100).
+INFO:      298 files found in /workspace/scratch/2dcc95c9fbaf/c-lib/fuzz/corpus/mp4
+INFO: seed corpus: files: 298 min: 8b max: 10363b total: 808979b rss: 30Mb
+stat::number_of_executed_units: 100000
+stat::average_exec_per_sec:     100000
+stat::new_units_added:          2
+stat::slowest_unit_time_sec:    0
+stat::peak_rss_mb:              382

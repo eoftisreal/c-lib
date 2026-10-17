@@ -1,0 +1,42 @@
+name: Decoder readiness (strict, manual)
+# This audit remains non-passing until a complete pixel backend exists.
+# Run it explicitly; ordinary development CI covers implemented functionality.
+on: [workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  decoded-frame-reference:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.99.1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: cargo build --locked --release -p codec-cli
+      - name: Require actual native decoded pictures against independent reference
+        run: python3 verification/run_acceptance.py --revision "${{ github.sha }}" --report acceptance.json --comparator target/release/yuv-compare
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: strict-decoded-frame-acceptance
+          path: acceptance.json
+
+  full-decoder-fuzz:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.99.1
+      - uses: dtolnay/rust-toolchain@nightly
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: cargo +1.99.1 build --locked --release -p codec-ffi
+      - run: cargo +nightly install cargo-fuzz --version 0.13.2 --locked
+      - name: Require complete pixel backend and dedicated decoder fuzz target
+        run: python3 verification/decoder_fuzz.py --library target/release/libcodec_ffi.so --report decoder-fuzz.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: full-decoder-fuzz-status
+          path: decoder-fuzz.json

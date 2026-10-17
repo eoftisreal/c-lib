@@ -1,0 +1,14 @@
+[package]
+name = "codec-av1"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+codec-core = { path = "../codec-core" }
+codec-bitstream = { path = "../codec-bitstream" }
+
+[dev-dependencies]
+container-mp4 = { path = "../container-mp4" }
+serde_json = "1"

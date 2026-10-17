@@ -1,0 +1,33 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/codec-core",
+    "crates/codec-bitstream",
+    "crates/codec-memory",
+    "crates/container-mp4",
+    "crates/codec-av1",
+    "crates/codec-dsl",
+    "crates/codec-neural",
+    "crates/codec-ffi",
+    "crates/codec-cli"
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Jules <jules@example.com>"]
+license = "MIT OR Apache-2.0"
+
+[workspace.dependencies]
+thiserror = "1.0.50"
+bitflags = "2.4.1"
+smallvec = "1.11.2"
+rayon = "1.8.0"
+clap = { version = "4.4.11", features = ["derive"] }
+log = "0.4.20"
+env_logger = "0.10.1"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1

@@ -1,0 +1,1690 @@
+{
+  "schema": 1,
+  "scope": "compressed-picture acceptance only",
+  "candidate_identity": "caller-supplied; independence requires source review",
+  "cases": [
+    {
+      "id": "lossy_4x4_q04.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "efd8e6bb49a1bc0e18cb34ebebd086b02c5a4ccc338989732e4c03ea107e15f6",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-4539i6y8/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-4539i6y8/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-4539i6y8/reference.yuv",
+          "/tmp/c-lib-conformance-4539i6y8/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "2086d743b4bb41efd114468bfce1a4fd04bc80b544c1cdca09d5429e69a85849",
+        "reference.yuv": "2086d743b4bb41efd114468bfce1a4fd04bc80b544c1cdca09d5429e69a85849"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-4539i6y8/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-4539i6y8/candidate.yuv",
+          "--width",
+          "64",
+          "--height",
+          "64",
+          "--bit-depth",
+          "8",
+          "--subsampling",
+          "420"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 64x64, 8-bit, 420 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "lossy_4x4_q12.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "2187940fdb425cee672b8f1d9de66c742727eff247b63cac6962aa364a4027b9",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-6ra47sw0/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-6ra47sw0/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-6ra47sw0/reference.yuv",
+          "/tmp/c-lib-conformance-6ra47sw0/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "27d70bd916b01cf50571725bbddaaf2e447ea07d5e324c671c6e3ecdb72cc30b",
+        "reference.yuv": "27d70bd916b01cf50571725bbddaaf2e447ea07d5e324c671c6e3ecdb72cc30b"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-6ra47sw0/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-6ra47sw0/candidate.yuv",
+          "--width",
+          "64",
+          "--height",
+          "64",
+          "--bit-depth",
+          "8",
+          "--subsampling",
+          "420"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 64x64, 8-bit, 420 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "lossy_4x4_q24.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "59d1a64a7cc96261b39036293f5bfc1b431c0edac5f955cfa9ed6ae1d1ae588a",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-9pp463z7/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-9pp463z7/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-9pp463z7/reference.yuv",
+          "/tmp/c-lib-conformance-9pp463z7/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "2517526f5deac66d5732cf0cc68180dd296cb6667dc4ab329fc30ea71f1d1db8",
+        "reference.yuv": "2517526f5deac66d5732cf0cc68180dd296cb6667dc4ab329fc30ea71f1d1db8"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-9pp463z7/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-9pp463z7/candidate.yuv",
+          "--width",
+          "64",
+          "--height",
+          "64",
+          "--bit-depth",
+          "8",
+          "--subsampling",
+          "420"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 64x64, 8-bit, 420 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "lossy_4x4_q48.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "870e2b836b72f53b398c582bd4a931a9934dd965fa01ebdc84c344a2a5417523",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-09xhgpn9/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-09xhgpn9/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-09xhgpn9/reference.yuv",
+          "/tmp/c-lib-conformance-09xhgpn9/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "9464a783421768ad355ca65883845f6c184991959b0b8f1772e3d5631dd5ff0e",
+        "reference.yuv": "9464a783421768ad355ca65883845f6c184991959b0b8f1772e3d5631dd5ff0e"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-09xhgpn9/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-09xhgpn9/candidate.yuv",
+          "--width",
+          "64",
+          "--height",
+          "64",
+          "--bit-depth",
+          "8",
+          "--subsampling",
+          "420"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 64x64, 8-bit, 420 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "lossy_4x4_full_q04.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "full-intra-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "1e09968959908a3ab797070ac4115c190a826423387ad7315326cde7bbab36e0",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-jarkjlp2/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-jarkjlp2/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-jarkjlp2/reference.yuv",
+          "/tmp/c-lib-conformance-jarkjlp2/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "1ee80bd327e01d7e576fb3f387edbfa0f22d8f38727f6cf3ff0b89b089203ce2",
+        "reference.yuv": "1ee80bd327e01d7e576fb3f387edbfa0f22d8f38727f6cf3ff0b89b089203ce2"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-jarkjlp2/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-jarkjlp2/candidate.yuv",
+          "--width",
+          "64",
+          "--height",
+          "64",
+          "--bit-depth",
+          "8",
+          "--subsampling",
+          "420"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 64x64, 8-bit, 420 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "lossy_4x4_full_q12.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "full-intra-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "89d3d1567db0735568e52fcf19708004245197c3dcb5bd60c315e93373601405",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-um4y2ht1/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-um4y2ht1/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-um4y2ht1/reference.yuv",
+          "/tmp/c-lib-conformance-um4y2ht1/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "fc4dab425806c8a53b7681d7cda5cebdcc36c63e1f0db7f2b08d9acead5378de",
+        "reference.yuv": "fc4dab425806c8a53b7681d7cda5cebdcc36c63e1f0db7f2b08d9acead5378de"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-um4y2ht1/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-um4y2ht1/candidate.yuv",
+          "--width",
+          "64",
+          "--height",
+          "64",
+          "--bit-depth",
+          "8",
+          "--subsampling",
+          "420"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 64x64, 8-bit, 420 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "lossy_4x4_full_q24.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "full-intra-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "1ebd4378627875531f935b319c70912426a570d58a660bc5e7f80a9340def7b4",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-x0smv4pb/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-x0smv4pb/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-x0smv4pb/reference.yuv",
+          "/tmp/c-lib-conformance-x0smv4pb/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "9f173c0ab5616f39b10f8897053fcaadc25b5a8f316cfadadc24dfd4eb8c20b2",
+        "reference.yuv": "9f173c0ab5616f39b10f8897053fcaadc25b5a8f316cfadadc24dfd4eb8c20b2"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-x0smv4pb/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-x0smv4pb/candidate.yuv",
+          "--width",
+          "64",
+          "--height",
+          "64",
+          "--bit-depth",
+          "8",
+          "--subsampling",
+          "420"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 64x64, 8-bit, 420 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "lossy_4x4_full_q48.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "full-intra-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "caf7c042494a6ad210bb5c84ee4182b9917a6491854c61fbfbd90cc5d123b0f7",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-v1hegbgd/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-v1hegbgd/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-v1hegbgd/reference.yuv",
+          "/tmp/c-lib-conformance-v1hegbgd/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "b5c04bb515ef6c5d948cf3e7fad8fb2c17ecb90993b316d440b7388b63b900cd",
+        "reference.yuv": "b5c04bb515ef6c5d948cf3e7fad8fb2c17ecb90993b316d440b7388b63b900cd"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-v1hegbgd/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-v1hegbgd/candidate.yuv",
+          "--width",
+          "64",
+          "--height",
+          "64",
+          "--bit-depth",
+          "8",
+          "--subsampling",
+          "420"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 64x64, 8-bit, 420 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_8_420_lossless.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossless",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "4cdbbc02cad0474e381b0ac39247b70b8990b24b31461a4adca9d4fe53c8b246",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-1ruln22e/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-1ruln22e/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-1ruln22e/reference.yuv",
+          "/tmp/c-lib-conformance-1ruln22e/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "b4fba7c65682b92786f68c8c7e8bfc7763c8f32f1436929b60098e3ccc09916a",
+        "reference.yuv": "b4fba7c65682b92786f68c8c7e8bfc7763c8f32f1436929b60098e3ccc09916a"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-1ruln22e/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-1ruln22e/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "8",
+          "--subsampling",
+          "420"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 8-bit, 420 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_8_420_lossy.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "e0b56499dbb86bd97a2cbf308fcdd0543f5b52306e179a65329889587f3a35ff",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-v8_sh2a0/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-v8_sh2a0/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-v8_sh2a0/reference.yuv",
+          "/tmp/c-lib-conformance-v8_sh2a0/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "2c2c586728c390b25bca7ec43f83347fd33e7efe08a6ff7956ed353a8dd944e9",
+        "reference.yuv": "2c2c586728c390b25bca7ec43f83347fd33e7efe08a6ff7956ed353a8dd944e9"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-v8_sh2a0/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-v8_sh2a0/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "8",
+          "--subsampling",
+          "420"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 8-bit, 420 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_8_422_lossless.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossless",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "8e041a46ccfacb3b404d86f39aec567fcd44a76b5b402713f573b6fa40e85a25",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-939ay228/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-939ay228/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-939ay228/reference.yuv",
+          "/tmp/c-lib-conformance-939ay228/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "0df6b4d4499f2f69dbb45d1979d59b6e977ba246c42455794b26ad64bd087d52",
+        "reference.yuv": "0df6b4d4499f2f69dbb45d1979d59b6e977ba246c42455794b26ad64bd087d52"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-939ay228/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-939ay228/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "8",
+          "--subsampling",
+          "422"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 8-bit, 422 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_8_422_lossy.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "7407cf14fcefa94c5ed701217d644a904d61d3e5cdd47dc6d0df82a67d52af60",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-8apb9mf6/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-8apb9mf6/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-8apb9mf6/reference.yuv",
+          "/tmp/c-lib-conformance-8apb9mf6/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "d9f0cc785e1d0a25fc9c2367dc73c439fe7ff80f007eea14ef521b06dcce58e2",
+        "reference.yuv": "d9f0cc785e1d0a25fc9c2367dc73c439fe7ff80f007eea14ef521b06dcce58e2"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-8apb9mf6/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-8apb9mf6/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "8",
+          "--subsampling",
+          "422"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 8-bit, 422 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_8_444_lossless.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossless",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "5dbcb0fff4264aa35cd7f38cddfd886c7caf4a62a938efa01ca0e22d1511e6fd",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-ewu9nvxh/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-ewu9nvxh/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-ewu9nvxh/reference.yuv",
+          "/tmp/c-lib-conformance-ewu9nvxh/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "fa63e76bfc307c03e01b53b4ce53d4ecbdf820306ebed973862b1c5778ada5ae",
+        "reference.yuv": "fa63e76bfc307c03e01b53b4ce53d4ecbdf820306ebed973862b1c5778ada5ae"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-ewu9nvxh/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-ewu9nvxh/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "8",
+          "--subsampling",
+          "444"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 8-bit, 444 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_8_444_lossy.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "43b5ff98ed85b07d5b08490001f409e52a941409e4be30f6e130cebdc4af24c9",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-b50ndjf5/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-b50ndjf5/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-b50ndjf5/reference.yuv",
+          "/tmp/c-lib-conformance-b50ndjf5/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "77a11e2b639f7a39576a165d990f33fc29c208cbcbaa2ddf9256824a81f3ce90",
+        "reference.yuv": "77a11e2b639f7a39576a165d990f33fc29c208cbcbaa2ddf9256824a81f3ce90"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-b50ndjf5/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-b50ndjf5/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "8",
+          "--subsampling",
+          "444"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 8-bit, 444 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_10_420_lossless.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossless",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "d0f0d95c3bc06bbccf6d8bef872405ffb0dd02b0ef2472510806c552a791ea61",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-f6vwovhe/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-f6vwovhe/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-f6vwovhe/reference.yuv",
+          "/tmp/c-lib-conformance-f6vwovhe/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "38263d4a0087b990e7fa63a7164d605c83c1cdb2518b1190cd396557bbc9811e",
+        "reference.yuv": "38263d4a0087b990e7fa63a7164d605c83c1cdb2518b1190cd396557bbc9811e"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-f6vwovhe/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-f6vwovhe/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "10",
+          "--subsampling",
+          "420"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 10-bit, 420 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_10_420_lossy.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "9ade6d4a1c3b7281e1def949c841d236bc9015a55f575d9d59d6a68f47eb50e4",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-p38b7b6p/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-p38b7b6p/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-p38b7b6p/reference.yuv",
+          "/tmp/c-lib-conformance-p38b7b6p/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "ac4daf91b282c19cc40ccf87f007127c60029dde1a9025bc497e3adbf3a01194",
+        "reference.yuv": "ac4daf91b282c19cc40ccf87f007127c60029dde1a9025bc497e3adbf3a01194"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-p38b7b6p/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-p38b7b6p/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "10",
+          "--subsampling",
+          "420"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 10-bit, 420 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_10_422_lossless.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossless",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "04712720331af7226e3aea6924f3e281de41b9b5d6edf78c48315e488cdf543d",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-3xrt1eq8/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-3xrt1eq8/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-3xrt1eq8/reference.yuv",
+          "/tmp/c-lib-conformance-3xrt1eq8/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "13b65398423149dc4cbd5bff52eeb71d1f4018c5bdbb1971cf69ca91fea4e32d",
+        "reference.yuv": "13b65398423149dc4cbd5bff52eeb71d1f4018c5bdbb1971cf69ca91fea4e32d"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-3xrt1eq8/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-3xrt1eq8/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "10",
+          "--subsampling",
+          "422"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 10-bit, 422 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_10_422_lossy.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "7b475b98b425c4fd0fdc4e65fd43260ec23e57ae54daf77be6bc25c82d5d41ac",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-89mybrou/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-89mybrou/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-89mybrou/reference.yuv",
+          "/tmp/c-lib-conformance-89mybrou/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "53de71858ea1cb128f60ebe2a44f0cd062214079c8f42a5cefd553b521afc3ae",
+        "reference.yuv": "53de71858ea1cb128f60ebe2a44f0cd062214079c8f42a5cefd553b521afc3ae"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-89mybrou/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-89mybrou/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "10",
+          "--subsampling",
+          "422"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 10-bit, 422 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_10_444_lossless.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossless",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "f2b629cb22327a77a1f0e916a4042051d3e7efc7b2c3427be09fdefb90eea7aa",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-g1vqx2je/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-g1vqx2je/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-g1vqx2je/reference.yuv",
+          "/tmp/c-lib-conformance-g1vqx2je/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "cef4bd6208b8573d21d4d02763c176dedbdfbcf5e9e347e1debd8b8c1f8213cb",
+        "reference.yuv": "cef4bd6208b8573d21d4d02763c176dedbdfbcf5e9e347e1debd8b8c1f8213cb"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-g1vqx2je/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-g1vqx2je/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "10",
+          "--subsampling",
+          "444"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 10-bit, 444 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_10_444_lossy.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "9d7b225c1661c5814d57435baabd234ada8475287f7059648432ed3ddf7b0268",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-96g9901q/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-96g9901q/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-96g9901q/reference.yuv",
+          "/tmp/c-lib-conformance-96g9901q/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "4a42e3c12326eb0522fe175366be5edde2096732ebf2da897f9f064bb76e2131",
+        "reference.yuv": "4a42e3c12326eb0522fe175366be5edde2096732ebf2da897f9f064bb76e2131"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-96g9901q/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-96g9901q/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "10",
+          "--subsampling",
+          "444"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 10-bit, 444 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_12_420_lossless.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossless",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "e2371ffac68a88451257aebf06726b4b6d684cf625b4f5f4115b679468da35ce",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-xrts_l9x/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-xrts_l9x/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-xrts_l9x/reference.yuv",
+          "/tmp/c-lib-conformance-xrts_l9x/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "950fa1b17ec5b9daaf4df9ed7d82c39a78030827ca6e167f1d792db8c82d87c1",
+        "reference.yuv": "950fa1b17ec5b9daaf4df9ed7d82c39a78030827ca6e167f1d792db8c82d87c1"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-xrts_l9x/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-xrts_l9x/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "12",
+          "--subsampling",
+          "420"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 12-bit, 420 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_12_420_lossy.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "b75a8ead83644dfa95e09bf81e1af1028ee7104cfea4e61dcbfb152f0c6a5726",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-fl9309ys/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-fl9309ys/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-fl9309ys/reference.yuv",
+          "/tmp/c-lib-conformance-fl9309ys/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "f39e1e453ccb4ce9ae10559547b72fad563f3c2243e73fdb59b37b95e8a48cc6",
+        "reference.yuv": "f39e1e453ccb4ce9ae10559547b72fad563f3c2243e73fdb59b37b95e8a48cc6"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-fl9309ys/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-fl9309ys/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "12",
+          "--subsampling",
+          "420"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 12-bit, 420 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_12_422_lossless.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossless",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "d5cdf1b61581c91613601ed2e0761c52cb56b17ac7222e2530b83b1694a4317d",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-d08vvkkl/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-d08vvkkl/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-d08vvkkl/reference.yuv",
+          "/tmp/c-lib-conformance-d08vvkkl/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "bd4dfe11e5de4e8503f0238531cabddd049a889d4e675c109cf462429a4fc110",
+        "reference.yuv": "bd4dfe11e5de4e8503f0238531cabddd049a889d4e675c109cf462429a4fc110"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-d08vvkkl/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-d08vvkkl/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "12",
+          "--subsampling",
+          "422"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 12-bit, 422 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_12_422_lossy.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "964183452353aedbd63918e424cf236b7ed7fd9719d9442db7aaee80c4b8d872",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-_7nt1s1_/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-_7nt1s1_/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-_7nt1s1_/reference.yuv",
+          "/tmp/c-lib-conformance-_7nt1s1_/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "45a5c5edb4c379680c4708608d9b0088398123a9cf1c3df1a6801c127e197c3d",
+        "reference.yuv": "45a5c5edb4c379680c4708608d9b0088398123a9cf1c3df1a6801c127e197c3d"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-_7nt1s1_/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-_7nt1s1_/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "12",
+          "--subsampling",
+          "422"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 12-bit, 422 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_12_444_lossless.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossless",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "0a9996c69406e5b111a345beefa25384490fc87bb4fde40de40ba84594c6dd0f",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-ek80dibg/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-ek80dibg/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-ek80dibg/reference.yuv",
+          "/tmp/c-lib-conformance-ek80dibg/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "57e3c12c424c5c98f22ad89efa4729249dd648de9124ef35d1f2aefec7cfd99e",
+        "reference.yuv": "57e3c12c424c5c98f22ad89efa4729249dd648de9124ef35d1f2aefec7cfd99e"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-ek80dibg/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-ek80dibg/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "12",
+          "--subsampling",
+          "444"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 12-bit, 444 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "intra_4x4_12_444_lossy.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "single-tile",
+        "reduced-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "55d7b7e4988497c8bbd9efea1d7dd64f554b4d72b563e462afb196784d196f94",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-2g2sjmiw/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-2g2sjmiw/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-2g2sjmiw/reference.yuv",
+          "/tmp/c-lib-conformance-2g2sjmiw/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "125a3c13866429b3da3498aa1127e62db1288f326c48ef04aceeee78f5dd4b7b",
+        "reference.yuv": "125a3c13866429b3da3498aa1127e62db1288f326c48ef04aceeee78f5dd4b7b"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-2g2sjmiw/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-2g2sjmiw/candidate.yuv",
+          "--width",
+          "32",
+          "--height",
+          "32",
+          "--bit-depth",
+          "12",
+          "--subsampling",
+          "444"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 32x32, 12-bit, 444 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    },
+    {
+      "id": "lossy_4x4_tiles.obu",
+      "features": [
+        "4x4-coding-blocks",
+        "lossy",
+        "four-tiles",
+        "full-intra-tx-set",
+        "no-loop-filters"
+      ],
+      "status": "PASS",
+      "input_sha256": "a5f35cb49ea97f39669477761cc25f3bc2aed71729fc4939d53e5a5eee449780",
+      "candidate": {
+        "argv": [
+          "target/release/av1-decode",
+          "--input",
+          "/tmp/c-lib-conformance-rws51n6l/input.obu",
+          "--output",
+          "/tmp/c-lib-conformance-rws51n6l/candidate.yuv"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "argv": [
+          "/workspace/scratch/597ed28584db/aom-build/aomdec",
+          "--rawvideo",
+          "-o",
+          "/tmp/c-lib-conformance-rws51n6l/reference.yuv",
+          "/tmp/c-lib-conformance-rws51n6l/input.obu"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "output_sha256": {
+        "candidate.yuv": "14ae40dd73ed66394eff5cfa4489955b6dc5d3c168a9a994b9f8ea3d0ac68e2b",
+        "reference.yuv": "14ae40dd73ed66394eff5cfa4489955b6dc5d3c168a9a994b9f8ea3d0ac68e2b"
+      },
+      "comparison": {
+        "argv": [
+          "/workspace/scratch/5a8487360f27/c-lib/target/release/yuv-compare",
+          "--expected",
+          "/tmp/c-lib-conformance-rws51n6l/reference.yuv",
+          "--actual",
+          "/tmp/c-lib-conformance-rws51n6l/candidate.yuv",
+          "--width",
+          "128",
+          "--height",
+          "128",
+          "--bit-depth",
+          "8",
+          "--subsampling",
+          "420"
+        ],
+        "returncode": 0,
+        "stdout": "Pixel-exact parity: 1 frames, 128x128, 8-bit, 420 YUV\n",
+        "stderr": ""
+      },
+      "reason": "pixel comparison"
+    }
+  ],
+  "features": {
+    "4x4-coding-blocks": "PASS",
+    "four-tiles": "PASS",
+    "full-intra-tx-set": "PASS",
+    "lossless": "PASS",
+    "lossy": "PASS",
+    "no-loop-filters": "PASS",
+    "reduced-tx-set": "PASS",
+    "single-tile": "PASS"
+  },
+  "manifest_sha256": "d8874e9518a0bbd67269a3b0ecc419d58229e6df18fbba4c082f75890604d07a",
+  "commands": {
+    "candidate": [
+      "target/release/av1-decode",
+      "--input",
+      "{input}",
+      "--output",
+      "{output}"
+    ],
+    "reference": [
+      "/workspace/scratch/597ed28584db/aom-build/aomdec",
+      "--rawvideo",
+      "-o",
+      "{output}",
+      "{input}"
+    ]
+  },
+  "revisions": {
+    "candidate": "f71b7953078f5851ce0eb4d63347f626874a4bda",
+    "reference": "libaom:394f9f7df624e4268fd8c894ead9f059d279e480"
+  },
+  "executable_sha256": {
+    "candidate": "9afc147f6659e5ba2ab5ca56507c546fa2462c6c9dc63449c12c97da18d366cb",
+    "reference": "760ca2056e5911a57c5ad6cdac77f88485830d4b95c29ab18d9437d846d66875",
+    "comparator": "81665606e8d63ea40d6b8fcad7e58b9cc0bf8f5c395edb05309d93d941796903"
+  }
+}

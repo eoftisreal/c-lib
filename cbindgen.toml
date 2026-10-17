@@ -1,0 +1,16 @@
+language = "C"
+include_guard = "CODEC_H"
+cpp_compat = true
+line_length = 200
+sys_includes = ["stdint.h"]
+no_includes = true
+after_includes = "typedef struct DecoderHandle DecoderHandle;\ntypedef struct CodecFrame CodecFrame;\ntypedef struct CodecPipeline CodecPipeline;\ntypedef struct CodecVulkanConfig { uint64_t device; uint64_t decode_queue; uint32_t queue_family_index; } CodecVulkanConfig;\ntypedef struct CodecVulkanFrameDescriptor { uint64_t image_view; uint64_t timeline_semaphore; uint64_t timeline_value; uint8_t dpb_slot; } CodecVulkanFrameDescriptor;\ntypedef struct CodecSyncAdjustment { double phase_error_sec; double control_signal; double audio_resample_ratio; } CodecSyncAdjustment;\ntypedef enum FfiCodecId { Av1 = 0, H264 = 1 } FfiCodecId;\n#define CODEC_ERR_INTERNAL_PANIC InternalPanic"
+
+[export]
+item_types = ["enums", "functions"]
+
+[enum]
+prefix_with_name = false
+
+[fn]
+args = "horizontal"

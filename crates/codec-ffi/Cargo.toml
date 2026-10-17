@@ -1,0 +1,17 @@
+[package]
+name = "codec-ffi"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+codec-core = { path = "../codec-core" }
+codec-av1 = { path = "../codec-av1" }
+codec-dsl = { path = "../codec-dsl" }
+
+[dev-dependencies]
+cbindgen = "0.29.4"

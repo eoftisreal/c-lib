@@ -1,0 +1,31 @@
+name: Tested API contracts and documentation
+on: [pull_request, push, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  api-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@1.99.1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m unittest discover -s verification -p 'test_*.py' -v
+      - run: python3 verification/feature_status.py --check
+      - run: python3 verification/api_contract.py
+      - name: Check ABI compatibility with PR base
+        if: github.event_name == 'pull_request'
+        run: python3 verification/api_contract.py --base "${{ github.event.pull_request.base.sha }}"
+      - run: cargo test --locked -p codec-ffi
+      - run: cargo test --locked --doc --workspace
+      - run: cargo doc --locked --workspace --no-deps
+        env:
+          RUSTDOCFLAGS: -D warnings
+      - run: cp -r docs examples include target/doc/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tested-rust-c-api-docs
+          path: target/doc/

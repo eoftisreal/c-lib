@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "major": 1,
+  "minor": 0,
+  "declarations": [
+    "CODEC_ERR_INTERNAL_PANIC InternalPanic",
+    "const char *codec_get_version(void);",
+    "enum FfiResult codec_decoder_create(uint32_t codec, struct DecoderHandle **out_handle);",
+    "enum FfiResult codec_decoder_set_vulkan_context(struct DecoderHandle *handle, const struct CodecVulkanConfig *config);",
+    "enum FfiResult codec_frame_export_vulkan_image(const struct CodecFrame *frame, struct CodecVulkanFrameDescriptor *out_desc);",
+    "enum FfiResult codec_pipeline_compile_dsl(const char *dsl_source, struct CodecPipeline **out_pipeline);",
+    "enum FfiResult codec_pipeline_step_sync(struct CodecPipeline *pipeline, double audio_pts, double vsync_pts, struct CodecSyncAdjustment *out_adj);",
+    "typedef enum FfiCodecId { Av1 = 0, H264 = 1 } FfiCodecId;",
+    "typedef enum FfiResult { Ok = 0, InvalidData = -1, Unsupported = -2, OutOfMemory = -3, InternalError = -4, InternalPanic = -5, } FfiResult;",
+    "typedef struct CodecFrame CodecFrame;",
+    "typedef struct CodecPipeline CodecPipeline;",
+    "typedef struct CodecSyncAdjustment { double phase_error_sec; double control_signal; double audio_resample_ratio; } CodecSyncAdjustment;",
+    "typedef struct CodecVulkanConfig { uint64_t device; uint64_t decode_queue; uint32_t queue_family_index; } CodecVulkanConfig;",
+    "typedef struct CodecVulkanFrameDescriptor { uint64_t image_view; uint64_t timeline_semaphore; uint64_t timeline_value; uint8_t dpb_slot; } CodecVulkanFrameDescriptor;",
+    "typedef struct DecoderHandle DecoderHandle;",
+    "uint32_t codec_get_abi_version(void);",
+    "uint64_t codec_get_capabilities(void);",
+    "void codec_decoder_destroy(struct DecoderHandle *handle);",
+    "void codec_pipeline_destroy(struct CodecPipeline *pipeline);"
+  ]
+}

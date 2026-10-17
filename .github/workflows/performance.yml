@@ -1,0 +1,23 @@
+name: Decoder performance regression
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    # Use a dedicated, fixed governor/CPU/OS runner; hosted-runner timings are not a baseline.
+    runs-on: [self-hosted, c-lib-benchmark]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.99.1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: cargo build --locked --release --workspace
+      - name: Measure verified decodes and reject regressions over ten percent
+        run: python3 verification/benchmark.py --report performance.json --comparator target/release/yuv-compare --runner-id c-lib-benchmark --build-id rust-1.99.1-release-default --revision "${{ github.sha }}" --baseline verification/benchmark-baseline.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: decoder-performance
+          path: performance.json

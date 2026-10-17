@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "cases": [
+    {
+      "id": "720p",
+      "path": null,
+      "width": 1280,
+      "height": 720,
+      "bit_depth": 8,
+      "layout": "420",
+      "frames": 120,
+      "features": [
+        "benchmark",
+        "720p"
+      ]
+    },
+    {
+      "id": "1080p",
+      "path": null,
+      "width": 1920,
+      "height": 1080,
+      "bit_depth": 8,
+      "layout": "420",
+      "frames": 120,
+      "features": [
+        "benchmark",
+        "1080p"
+      ]
+    },
+    {
+      "id": "1440p",
+      "path": null,
+      "width": 2560,
+      "height": 1440,
+      "bit_depth": 8,
+      "layout": "420",
+      "frames": 120,
+      "features": [
+        "benchmark",
+        "1440p"
+      ]
+    },
+    {
+      "id": "4k",
+      "path": null,
+      "width": 3840,
+      "height": 2160,
+      "bit_depth": 8,
+      "layout": "420",
+      "frames": 120,
+      "features": [
+        "benchmark",
+        "4k"
+      ]
+    }
+  ]
+}

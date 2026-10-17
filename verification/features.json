@@ -1,0 +1,174 @@
+{
+  "schema": 1,
+  "profiles": [
+    {
+      "id": 0,
+      "name": "Main",
+      "decoded_picture_support": false
+    },
+    {
+      "id": 1,
+      "name": "High",
+      "decoded_picture_support": false
+    },
+    {
+      "id": 2,
+      "name": "Professional",
+      "decoded_picture_support": false
+    }
+  ],
+  "features": [
+    {
+      "id": "intra",
+      "acceptance_features": [
+        "intra"
+      ],
+      "implementation": "partial",
+      "evidence": "crates/codec-av1/tests/reconstruction_pipeline.rs"
+    },
+    {
+      "id": "inter",
+      "acceptance_features": [
+        "inter"
+      ],
+      "implementation": "missing",
+      "evidence": "crates/codec-av1/src/frame/inter.rs"
+    },
+    {
+      "id": "lossless",
+      "acceptance_features": [
+        "lossless"
+      ],
+      "implementation": "partial",
+      "evidence": "crates/codec-av1/tests/phase1_oracles.rs"
+    },
+    {
+      "id": "lossy",
+      "acceptance_features": [
+        "lossy"
+      ],
+      "implementation": "partial",
+      "evidence": "crates/codec-av1/tests/phase1_oracles.rs"
+    },
+    {
+      "id": "8-bit",
+      "acceptance_features": [
+        "8-bit"
+      ],
+      "implementation": "partial",
+      "evidence": "crates/codec-cli/src/oracle.rs"
+    },
+    {
+      "id": "10-bit",
+      "acceptance_features": [
+        "10-bit"
+      ],
+      "implementation": "partial",
+      "evidence": "crates/codec-cli/src/oracle.rs"
+    },
+    {
+      "id": "12-bit",
+      "acceptance_features": [
+        "12-bit"
+      ],
+      "implementation": "partial",
+      "evidence": "crates/codec-cli/src/oracle.rs"
+    },
+    {
+      "id": "multi-tile",
+      "acceptance_features": [
+        "multi-tile"
+      ],
+      "implementation": "partial",
+      "evidence": "crates/codec-av1/tests/frame.rs"
+    },
+    {
+      "id": "deblocking",
+      "acceptance_features": [
+        "deblocking"
+      ],
+      "implementation": "scalar-kernel-verified",
+      "evidence": "crates/codec-av1/src/frame/filters.rs"
+    },
+    {
+      "id": "cdef",
+      "acceptance_features": [
+        "cdef"
+      ],
+      "implementation": "scalar-kernel-verified",
+      "evidence": "crates/codec-av1/tests/p1_oracles.rs"
+    },
+    {
+      "id": "superres",
+      "acceptance_features": [
+        "superres"
+      ],
+      "implementation": "scalar-kernel-verified",
+      "evidence": "crates/codec-av1/tests/p1_oracles.rs"
+    },
+    {
+      "id": "wiener",
+      "acceptance_features": [
+        "wiener"
+      ],
+      "implementation": "scalar-kernel-verified",
+      "evidence": "crates/codec-av1/tests/p1_oracles.rs"
+    },
+    {
+      "id": "sgrproj",
+      "acceptance_features": [
+        "sgrproj"
+      ],
+      "implementation": "scalar-kernel-verified",
+      "evidence": "crates/codec-av1/tests/p1_oracles.rs"
+    },
+    {
+      "id": "film-grain",
+      "acceptance_features": [
+        "film-grain"
+      ],
+      "implementation": "syntax-only",
+      "evidence": "crates/codec-av1/src/frame/grain.rs"
+    },
+    {
+      "id": "display-order",
+      "acceptance_features": [
+        "display-order"
+      ],
+      "implementation": "partial",
+      "evidence": "crates/codec-av1/tests/p1_lifecycle.rs"
+    },
+    {
+      "id": "mp4",
+      "acceptance_features": [
+        "mp4"
+      ],
+      "implementation": "demux-only",
+      "evidence": "crates/container-mp4/src/demuxer.rs"
+    },
+    {
+      "id": "rgb",
+      "acceptance_features": [
+        "rgb"
+      ],
+      "implementation": "syntax-only",
+      "evidence": "crates/codec-av1/src/sequence.rs"
+    },
+    {
+      "id": "malformed-no-output",
+      "acceptance_features": [
+        "malformed-no-output"
+      ],
+      "implementation": "decoder-missing",
+      "evidence": "fuzz/fuzz_targets/av1.rs"
+    },
+    {
+      "id": "official-vectors",
+      "acceptance_features": [
+        "official-vectors"
+      ],
+      "implementation": "corpus-missing",
+      "evidence": "verification/P2_P3_STATUS.md"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+name: Intra core pixel conformance
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  lossless-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.99.1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build independent pinned libaom reference decoder
+        run: |
+          git clone https://aomedia.googlesource.com/aom /tmp/aom
+          git -C /tmp/aom checkout --detach 394f9f7df624e4268fd8c894ead9f059d279e480
+          cmake -S /tmp/aom -B /tmp/aom-build -DAOM_TARGET_CPU=generic -DCONFIG_AV1_ENCODER=0 -DENABLE_TESTS=0 -DENABLE_DOCS=0
+          cmake --build /tmp/aom-build --target aomdec -j2
+      - run: cargo build --locked --release -p codec-cli --bin av1-decode --bin yuv-compare
+      - name: Compare complete native Y/U/V output
+        run: |
+          python3 verification/conformance.py --manifest verification/core-conformance.json \
+            --candidate '["target/release/av1-decode","--input","{input}","--output","{output}"]' \
+            --reference '["/tmp/aom-build/aomdec","--rawvideo","--i420","-o","{output}","{input}"]' \
+            --candidate-revision "${{ github.sha }}" \
+            --reference-revision libaom:394f9f7df624e4268fd8c894ead9f059d279e480 \
+            --comparator target/release/yuv-compare --report core-conformance-report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lossless-core-pixel-comparison
+          path: core-conformance-report.json
+      - name: Compare constrained lossy and native depth/chroma pictures
+        run: |
+          python3 verification/conformance.py --manifest verification/intra-4x4-conformance.json \
+            --candidate '["target/release/av1-decode","--input","{input}","--output","{output}"]' \
+            --reference '["/tmp/aom-build/aomdec","--rawvideo","-o","{output}","{input}"]' \
+            --candidate-revision "${{ github.sha }}" \
+            --reference-revision libaom:394f9f7df624e4268fd8c894ead9f059d279e480 \
+            --comparator target/release/yuv-compare --report intra-4x4-conformance-report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: constrained-intra-pixel-comparison
+          path: intra-4x4-conformance-report.json

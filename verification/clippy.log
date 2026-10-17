@@ -1,0 +1,5 @@
+    Checking container-mp4 v0.1.0 (/workspace/scratch/2492308d6924/project/library-feat-milestone-1-core-9563835585090084375/crates/container-mp4)
+    Checking codec-av1 v0.1.0 (/workspace/scratch/2492308d6924/project/library-feat-milestone-1-core-9563835585090084375/crates/codec-av1)
+    Checking codec-ffi v0.1.0 (/workspace/scratch/2492308d6924/project/library-feat-milestone-1-core-9563835585090084375/crates/codec-ffi)
+    Checking codec-cli v0.1.0 (/workspace/scratch/2492308d6924/project/library-feat-milestone-1-core-9563835585090084375/crates/codec-cli)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.71s

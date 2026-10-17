@@ -1,0 +1,9 @@
+[package]
+name = "codec-dsl"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+codec-core = { path = "../codec-core" }

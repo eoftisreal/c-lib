@@ -1,0 +1,15 @@
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.01s
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.01s
+     Running `fuzz/target/x86_64-unknown-linux-gnu/release/av1 -artifact_prefix=/workspace/scratch/2dcc95c9fbaf/c-lib/fuzz/artifacts/av1/ -runs=10000 -max_len=65536 -verbosity=0 -print_final_stats=1 /workspace/scratch/2dcc95c9fbaf/c-lib/fuzz/corpus/av1`
+INFO: Running with entropic power schedule (0xFF, 100).
+INFO:     2413 files found in /workspace/scratch/2dcc95c9fbaf/c-lib/fuzz/corpus/av1
+INFO: seed corpus: files: 2413 min: 1b max: 829b total: 151784b rss: 33Mb
+###### Recommended dictionary. ######
+"\006\000\000\000\000\000\000\000" # Uses: 311
+"\036\377\377\377\377\377\377\377" # Uses: 149
+###### End of recommended dictionary. ######
+stat::number_of_executed_units: 10000
+stat::average_exec_per_sec:     10000
+stat::new_units_added:          12
+stat::slowest_unit_time_sec:    0
+stat::peak_rss_mb:              168

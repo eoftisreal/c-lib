@@ -1,0 +1,28 @@
+Excerpt from the initial run; this run failed and is not counted as a passing gate.
+LeakSanitizer has encountered a fatal error.
+==495==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1
+==495==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)
+==495==HINT: LeakSanitizer requires ptrace_scope to be disabled (e.g. echo 0 > /proc/sys/kernel/yama/ptrace_scope)
+MS: 5 EraseBytes-EraseBytes-PersAutoDict-PersAutoDict-ChangeByte- DE: "\000\000:m"-"H'"-; base unit: 83e9f7d569278f94c554ab7ad1e804ce25acf21f
+
+
+artifact_prefix='/workspace/scratch/2dcc95c9fbaf/c-lib/fuzz/artifacts/av1/'; Test unit written to /workspace/scratch/2dcc95c9fbaf/c-lib/fuzz/artifacts/av1/crash-da39a3ee5e6b4b0d3255bfef95601890afd80709
+Base64:
+
+────────────────────────────────────────────────────────────────────────────────
+
+Failing input:
+
+	fuzz/artifacts/av1/crash-da39a3ee5e6b4b0d3255bfef95601890afd80709
+
+Reproduce with:
+
+	cargo fuzz run av1 fuzz/artifacts/av1/crash-da39a3ee5e6b4b0d3255bfef95601890afd80709
+
+Minimize test case with:
+
+	cargo fuzz tmin av1 fuzz/artifacts/av1/crash-da39a3ee5e6b4b0d3255bfef95601890afd80709
+
+────────────────────────────────────────────────────────────────────────────────
+
+Error: Fuzz target exited with exit status: 1

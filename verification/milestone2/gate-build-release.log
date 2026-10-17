@@ -1,0 +1,4 @@
+   Compiling codec-av1 v0.1.0 (/workspace/scratch/2dcc95c9fbaf/c-lib/crates/codec-av1)
+   Compiling codec-ffi v0.1.0 (/workspace/scratch/2dcc95c9fbaf/c-lib/crates/codec-ffi)
+   Compiling codec-cli v0.1.0 (/workspace/scratch/2dcc95c9fbaf/c-lib/crates/codec-cli)
+    Finished `release` profile [optimized] target(s) in 3.48s

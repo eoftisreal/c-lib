@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "fixtures": [
+    {
+      "input": "tests/intra_lossless_core.obu",
+      "input_sha256": "84a795e9dd20384d5d9cbe6a2405c72c056cb1ffdca8bf342c6efabdce88080b",
+      "oracle": "tests/oracles/intra_lossless_core.yuv",
+      "oracle_sha256": "56e52afa30e34107ac278d2cf3e53a4ca3b7e05d547b14df39719905582ea530",
+      "samples": 18432
+    },
+    {
+      "input": "tests/intra_lossless.obu",
+      "input_sha256": "6d9c69993473587d172038760d32aea146be1324ce4e0f1ba55e0a5101d6d559",
+      "oracle": "tests/oracles/intra_lossless_core.yuv",
+      "oracle_sha256": "56e52afa30e34107ac278d2cf3e53a4ca3b7e05d547b14df39719905582ea530",
+      "samples": 18432
+    },
+    {
+      "input": "tests/intra_lossless_palette.obu",
+      "input_sha256": "46229782e78d6ca3697d0e4099f425375bc724c753ae2db19a547cd857281d95",
+      "oracle": "tests/oracles/intra_lossless_palette.yuv",
+      "oracle_sha256": "83304df264cad2b026d06c83eed6d7130136708bd55364dea686bd34cbc20e8c",
+      "samples": 2304
+    },
+    {
+      "input": "tests/intra_lossless_gradient.obu",
+      "input_sha256": "07e33ead54e9a799032e32d97e3aa2698a37ee34453a54e534169378279900d7",
+      "oracle": "tests/oracles/intra_lossless_gradient.yuv",
+      "oracle_sha256": "8b8197a7a05e93592b677f244066a0ea53ff407413549e1c2d29b33ccd8752be",
+      "samples": 4608
+    },
+    {
+      "input": "tests/intra_lossless_tiles8.obu",
+      "input_sha256": "79c8dfef26505fba6a73ea5170bf9b5ecb8458326ec4e6f91a20ffb50473b7c6",
+      "oracle": "tests/oracles/intra_lossless_tiles8.yuv",
+      "oracle_sha256": "d2b1d5469d51f65e1ea29f82be7f5d22af0b16fa8848c83c898638a78f60f65a",
+      "samples": 55296
+    },
+    {
+      "input": "tests/intra_lossless_tiles10.obu",
+      "input_sha256": "1bff3f0b9eef3bbba405da8bc63d2f983c51808ceb4d3644d9938a75ebeed3b1",
+      "oracle": "tests/oracles/intra_lossless_tiles10.yuv",
+      "oracle_sha256": "05f6f1cc804f93e5881550ea8158399c541fbdd4d5ff2fc6e46cf6781c8fc166",
+      "samples": 55296
+    },
+    {
+      "input": "tests/intra_lossless_tiles8_palette.obu",
+      "input_sha256": "00236e07acc14b3500d42b3fdb9c7d6d74cb96fc4955f61cf9bf02f9a6834924",
+      "oracle": "tests/oracles/intra_lossless_tiles8_palette.yuv",
+      "oracle_sha256": "d2b1d5469d51f65e1ea29f82be7f5d22af0b16fa8848c83c898638a78f60f65a",
+      "samples": 55296
+    }
+  ]
+}

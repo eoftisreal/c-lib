@@ -1,0 +1,67 @@
+[package]
+name = "codec-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+container-mp4 = { path = "../crates/container-mp4" }
+codec-av1 = { path = "../crates/codec-av1" }
+codec-bitstream = { path = "../crates/codec-bitstream" }
+codec-core = { path = "../crates/codec-core" }
+
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "mp4"
+path = "fuzz_targets/mp4.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "av1"
+path = "fuzz_targets/av1.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "av1_settings"
+path = "fuzz_targets/av1_settings.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "av1_blocks"
+path = "fuzz_targets/av1_blocks.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "av1_filters"
+path = "fuzz_targets/av1_filters.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "av1_cdf"
+path = "fuzz_targets/av1_cdf.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "av1_picture"
+path = "fuzz_targets/av1_picture.rs"
+test = false
+doc = false
+bench = false

@@ -1,0 +1,21 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.31s
+     Running tests/c_integration.rs (target/debug/deps/c_integration-0e9b978b19ff2fc6)
+
+running 1 test
+test test_c_abi ... FAILED
+
+failures:
+
+---- test_c_abi stdout ----
+
+thread 'test_c_abi' (17) panicked at crates/codec-ffi/tests/c_integration.rs:59:33:
+Required C compiler codec-compiler-that-does-not-exist unavailable: No such file or directory (os error 2)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    test_c_abi
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+error: test failed, to rerun pass `-p codec-ffi --test c_integration`

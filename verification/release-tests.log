@@ -1,0 +1,121 @@
+   Compiling codec-ffi v0.1.0 (/workspace/scratch/2492308d6924/project/library-feat-milestone-1-core-9563835585090084375/crates/codec-ffi)
+    Finished `release` profile [optimized] target(s) in 22.81s
+     Running unittests src/lib.rs (target/release/deps/codec_av1-371b3e5a90c31c16)
+
+running 8 tests
+test obu::tests::reserved_types_are_skipped_within_bounds ... ok
+test obu::tests::malformed_headers_and_boundaries ... ok
+test sequence::tests::monochrome_profile_two_skips_subsampling_and_uv_delta ... ok
+test sequence::tests::reserved_chroma_and_missing_trailing_one ... ok
+test sequence::tests::reserved_level_and_payload_trailing_bits ... ok
+test sequence::tests::rgb_twelve_bit_profile_two_does_not_read_subsampling ... ok
+test sequence::tests::timing_and_operating_point_constraints ... ok
+test sequence::tests::unsupported_and_inconsistent_headers ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/release/deps/codec_bitstream-0d42a9212f3da206)
+
+running 6 tests
+test reader::safety_tests::leb128_limits ... ok
+test reader::tests::test_exp_golomb ... ok
+test reader::safety_tests::bytes_overflow_and_alignment ... ok
+test reader::tests::test_leb128 ... ok
+test reader::tests::test_read_bits ... ok
+test reader::uvlc_tests::av1_uvlc_maximum ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/release/deps/codec_cli-6da86e30db7ecf1d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration_test.rs (target/release/deps/integration_test-f6182fdd0c6a5573)
+
+running 2 tests
+test real_av1_mp4_all_samples ... ok
+test cli_reports_late_corruption ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running unittests src/lib.rs (target/release/deps/codec_core-608821e4c54b8ed7)
+
+running 2 tests
+test time::tests::exact_ordering ... ok
+test time::tests::wide_rescale_and_invalid_bases ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/release/deps/codec_ffi-310b0ee7d9dcd47e)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/c_integration.rs (target/release/deps/c_integration-4a1a8af60729646c)
+
+running 1 test
+test test_c_abi ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+     Running unittests src/lib.rs (target/release/deps/codec_memory-8728eebd00fa5479)
+
+running 2 tests
+test tests::odd_dimensions_and_shared_planes ... ok
+test tests::aggregate_limit_before_allocation ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/release/deps/container_mp4-4acddbff32b1b709)
+
+running 8 tests
+test demuxer::tests::timing_locations_and_sync_validation ... ok
+test demuxer::tests::empty_ctts_rejected_regardless_of_order ... ok
+test demuxer::tests::malformed_mdhd_and_description_boundaries ... ok
+test demuxer::tests::unsigned_and_signed_composition_offsets ... ok
+test demuxer::tests::stsc_order_descriptions_and_coverage ... ok
+test demuxer::tests::hostile_inputs_never_panic ... ok
+test demuxer::tests::valid_samples_and_eof ... ok
+test demuxer::tests::missing_truncated_duplicate_and_oversized_tables ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+   Doc-tests codec_av1
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests codec_bitstream
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests codec_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests codec_ffi
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests codec_memory
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests container_mp4
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
