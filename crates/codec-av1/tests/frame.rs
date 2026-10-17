@@ -289,4 +289,3 @@ fn ten_bit_restoration_syntax_matches_trace() {
     assert_eq!(h.quantization.base_q_idx, 128);
     assert_eq!(h.restoration.types, [0, 0, 0]);
 }
-
