@@ -38,9 +38,12 @@ the entropy cursor. Cargo does not link libaom at runtime.
 - Lossy, 12-bit, 4:2:2 and 4:4:4 pictures require **4x4 coding blocks**.
   Larger lossy transforms and entropy-coded transform-depth selection remain
   unsupported; existing 4..64 inverse-transform component tests do not enable them.
-- Deblocking levels, CDEF strengths/index bits and restoration must be zero/off.
-  The decoder rejects active filtering before publishing pixels; filtering is not
-  silently omitted. Quantization matrices, segmentation and delta-Q/LF are rejected.
+- Only disabled in-loop filtering is accepted: all loop-filter levels zero,
+  CDEF bits zero with one zero-strength set, and restoration types all off.
+  Active filtering is rejected before reconstructing pixels, because the
+  high-level pipeline still needs per-block deblocking decisions, CDEF index
+  selection, decoded restoration-unit parameters and whole-frame pixel parity.
+  Quantization matrices, segmentation and delta-Q/LF are rejected.
 - Inter pictures, 128x128 superblocks, oblique prediction, angle deltas, IntraBC,
   super-resolution and film grain remain unsupported.
 - Dimensions must be multiples of eight, at most 4096x4096; packets at most 16 MiB.
