@@ -21,6 +21,7 @@ class RunnerTests(unittest.TestCase):
     def test_absent_decoder_and_missing_fixture_are_blocked(self):
         report = conformance.run([self.case], self.root)
         self.assertEqual(report['features']['8-bit'], 'BLOCKED')
+        self.assertIn('candidate command not supplied', report['cases'][0]['reason'])
         self.case['path'] = None
         self.assertIn('fixture not installed', conformance.run([self.case], self.root)['cases'][0]['reason'])
 

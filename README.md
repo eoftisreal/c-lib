@@ -2,12 +2,15 @@
 
 This repository contains AV1 bitstream and frame-header validation, MP4 demuxing,
 clock synchronization, a C interface, and experimental codec processing primitives.
-The native Rust `decode_intra_frame` entry point decodes constrained 8-bit and
-10-bit 4:2:0 lossless key pictures into real pixels. Four pinned 8-bit fixtures
-and a generated 10-bit fixture have independent libaom YUV comparison gates.
+The native Rust `decode_intra_frame` entry point decodes constrained AV1
+key pictures to real pixels, including lossless 8/10-bit 4:2:0 and 4x4
+lossy 8/10/12-bit 4:2:0, 4:2:2 and 4:4:4 subsets. The [intra conformance
+workflow](.github/workflows/core-pixel-conformance.yml) verifies 34 pictures
+pixel-for-pixel against independent libaom output. Active in-loop filtering
+is deliberately unsupported until complete syntax and YUV parity are verified.
 See [supported scope](docs/AV1_SUPPORT.md).
-**It is not yet a complete pixel-reconstructing AV1 decoder, Vulkan video decoding
-backend, or neural frame-interpolation engine.**
+**This is not yet a general AV1 video decoder, Vulkan Video backend, or
+neural frame-interpolation engine.**
 
 ## API, verification and release contracts
 
