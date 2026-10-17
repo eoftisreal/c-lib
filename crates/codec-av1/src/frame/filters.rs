@@ -830,8 +830,7 @@ mod filter_kernel_tests {
         let u = codec_core::Plane::new(4, 4, 4, vec![110; 16]).unwrap();
         let v = codec_core::Plane::new(4, 4, 4, vec![120; 16]).unwrap();
         let mut frame =
-            codec_core::PlanarFrame::new(8, codec_core::ChromaSubsampling::Cs420, y, u, v)
-                .unwrap();
+            codec_core::PlanarFrame::new(8, codec_core::ChromaSubsampling::Cs420, y, u, v).unwrap();
         let initial = frame.clone();
         let base_loop = LoopFilter {
             levels: [0; 4],
