@@ -847,8 +847,9 @@ impl PartitionSyntax for IntraBlockDecoder<'_, '_> {
 /// 4:2:0, 4:2:2, and 4:4:4 subsampling formats for both lossless and lossy modes.
 /// All use 64-pixel superblocks and independently initialized tiles, including
 /// multiple tile groups. Real transform type, quantizer and coefficient syntax
-/// drive lossy reconstruction, followed by normative in-loop filtering (Deblocking,
-/// CDEF, Loop Restoration).
+/// drive lossy reconstruction. Only pictures with no active in-loop filtering
+/// currently pass the compressed-picture acceptance gate; active filtering is
+/// rejected until complete filter syntax and pixel parity are verified.
 /// DC, zero-delta V/H, smooth, Paeth, CfL, palette and filter-intra are connected.
 /// Segmentation, oblique prediction, IntraBC and film grain remain unsupported.
 /// Other syntax returns `Unsupported`; failed decoding leaves `state` unchanged.
@@ -928,6 +929,14 @@ pub fn decode_intra_frame(
     {
         return Err(CodecError::InvalidData);
     }
+    // Filter kernels alone cannot decode per-block deblocking decisions, CDEF
+    // indices, or restoration-unit coefficients. Reject these modes before
+    // allocating reconstruction buffers or publishing decoder state.
+    super::filters::require_verified_filter_configuration(
+        &header.loop_filter,
+        &header.cdef,
+        &header.restoration,
+    )?;
     let mut recon = PictureReconstruction::new(width, height, bit_depth, subsampling)?;
 
     let mi_cols = width.div_ceil(4);
