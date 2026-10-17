@@ -12,7 +12,7 @@
       ],
       "status": "BLOCKED",
       "input_sha256": "6d9c69993473587d172038760d32aea146be1324ce4e0f1ba55e0a5101d6d559",
-      "reason": "c-lib compressed-picture decoder unavailable"
+      "reason": "broad acceptance candidate command not supplied; constrained intra pixel gates are separate"
     },
     {
       "id": "intra_10bit.obu",
@@ -23,7 +23,7 @@
       ],
       "status": "BLOCKED",
       "input_sha256": "7b21299e906465b344217fc14dc8ec492b0fed856659710fb9fb0a11eadacaf5",
-      "reason": "c-lib compressed-picture decoder unavailable"
+      "reason": "broad acceptance candidate command not supplied; constrained intra pixel gates are separate"
     },
     {
       "id": "intra_tiles.obu",
@@ -33,7 +33,7 @@
       ],
       "status": "BLOCKED",
       "input_sha256": "62713f4360ed9da501fe31b1d7296ec2154e1e70221c3b6d562a4588d3c62198",
-      "reason": "c-lib compressed-picture decoder unavailable"
+      "reason": "broad acceptance candidate command not supplied; constrained intra pixel gates are separate"
     },
     {
       "id": "intra_film_grain.obu",
@@ -43,7 +43,7 @@
       ],
       "status": "BLOCKED",
       "input_sha256": "7829455c12d3b80f6e1d5727db43ee9b56b061e38fd3115996b12f51ed4fece6",
-      "reason": "c-lib compressed-picture decoder unavailable"
+      "reason": "broad acceptance candidate command not supplied; constrained intra pixel gates are separate"
     },
     {
       "id": "real_av1.mp4",
@@ -53,7 +53,7 @@
       ],
       "status": "BLOCKED",
       "input_sha256": "41a67ea2a66f506f5f73b393b3b3cffd41c24636f5a9676da16aba245a3927b8",
-      "reason": "c-lib compressed-picture decoder unavailable"
+      "reason": "broad acceptance candidate command not supplied; constrained intra pixel gates are separate"
     },
     {
       "id": "multi_av1.mp4",
@@ -64,7 +64,7 @@
       ],
       "status": "BLOCKED",
       "input_sha256": "6eed5873bca2da7de5ea740a7b5fd24a155ffadd8709f461c75b672ba721c2ee",
-      "reason": "c-lib compressed-picture decoder unavailable"
+      "reason": "broad acceptance candidate command not supplied; constrained intra pixel gates are separate"
     },
     {
       "id": "intra_12bit",
