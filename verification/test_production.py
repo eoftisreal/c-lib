@@ -27,7 +27,7 @@ class ProductionTests(unittest.TestCase):
         manifest = json.loads((root / 'conformance.json').read_text())
         errors = acceptance_gate.failures(report, manifest, conformance.digest(root / 'conformance.json'), 'HEAD')
         text = '\n'.join(errors)
-        self.assertIn('BLOCKED: c-lib compressed-picture decoder unavailable', text)
+        self.assertIn('BLOCKED: broad acceptance candidate command not supplied; constrained intra pixel gates are separate', text)
         self.assertIn('comparisons were not run', text)
         for invented in ('did not succeed', 'no matching native pixel digests', 'missing or changed fixture hash', 'executable hashes required'):
             self.assertNotIn(invented, text)
