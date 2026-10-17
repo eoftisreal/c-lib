@@ -50,7 +50,7 @@ def run_case(case, root, candidate, reference, comparator, timeout):
         row.update(status='FAIL', reason='fixture SHA-256 mismatch')
         return row
     if not candidate:
-        row['reason'] = 'c-lib compressed-picture decoder unavailable'
+        row['reason'] = 'broad acceptance candidate command not supplied; constrained intra pixel gates are separate'
         return row
     if case.get('layout') not in ('420', '422', '444'):
         row['reason'] = 'native output layout unsupported by YUV comparator (no color conversion permitted)'
