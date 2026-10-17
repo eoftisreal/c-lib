@@ -678,6 +678,29 @@ pub fn restoration_frame(
     Ok(())
 }
 
+/// Fail closed until active in-loop filtering is decoded with its complete
+/// per-block/per-region parameters and independently verified against a reference.
+///
+/// Scalar filter kernels are useful for component testing, but their existence
+/// alone does not establish AV1 bitstream-to-picture conformance. In particular,
+/// restoration units require entropy-coded coefficients and CDEF needs region
+/// strengths and indices from the compressed tile syntax.
+pub(crate) fn require_verified_filter_configuration(
+    loop_filter: &LoopFilter,
+    cdef: &Cdef,
+    restoration: &Restoration,
+) -> CodecResult<()> {
+    if loop_filter.levels != [0; 4]
+        || cdef.bits != 0
+        || cdef.strengths.as_slice() != [[0; 4]]
+        || restoration.types != [0; 3]
+        || restoration.unit_sizes.is_some()
+    {
+        return Err(CodecError::Unsupported);
+    }
+    Ok(())
+}
+
 /// Applies normative AV1 in-loop filtering cascade (§7.14 - §7.17):
 /// 1. Deblocking (AV1 §7.14)
 /// 2. CDEF (AV1 §7.15)
@@ -688,6 +711,7 @@ pub fn apply_in_loop_filters(
     cdef: &Cdef,
     restoration: &Restoration,
 ) -> CodecResult<()> {
+    require_verified_filter_configuration(loop_filter, cdef, restoration)?;
     deblock_frame(frame, loop_filter)?;
     cdef_frame(frame, cdef)?;
     restoration_frame(frame, restoration)?;
@@ -798,6 +822,63 @@ mod filter_kernel_tests {
             Err(CodecError::Unsupported)
         );
         assert_eq!(p1, vec![128u16; 16]);
+    }
+
+    #[test]
+    fn high_level_filter_pipeline_rejects_unverified_active_syntax_without_mutation() {
+        let y = codec_core::Plane::new(8, 8, 8, vec![100; 64]).unwrap();
+        let u = codec_core::Plane::new(4, 4, 4, vec![110; 16]).unwrap();
+        let v = codec_core::Plane::new(4, 4, 4, vec![120; 16]).unwrap();
+        let mut frame =
+            codec_core::PlanarFrame::new(8, codec_core::ChromaSubsampling::Cs420, y, u, v)
+                .unwrap();
+        let initial = frame.clone();
+        let base_loop = LoopFilter {
+            levels: [0; 4],
+            sharpness: 0,
+            delta_enabled: true,
+            ref_deltas: [1, 0, 0, 0, -1, 0, -1, -1],
+            mode_deltas: [0; 2],
+        };
+        let base_cdef = Cdef {
+            damping: 3,
+            bits: 0,
+            strengths: vec![[0; 4]],
+        };
+        let base_restoration = Restoration {
+            types: [0; 3],
+            unit_sizes: None,
+        };
+
+        // Existing independently verified pictures have no active in-loop filter.
+        assert_eq!(
+            apply_in_loop_filters(&mut frame, &base_loop, &base_cdef, &base_restoration),
+            Ok(())
+        );
+        assert_eq!(frame, initial);
+
+        let mut enabled_loop = base_loop.clone();
+        enabled_loop.levels = [12, 12, 8, 8];
+        let mut enabled_cdef = base_cdef.clone();
+        enabled_cdef.strengths = vec![[1, 0, 1, 0]];
+        let mut indexed_cdef = base_cdef.clone();
+        indexed_cdef.bits = 1;
+        indexed_cdef.strengths = vec![[0; 4]; 2];
+        let mut enabled_restoration = base_restoration.clone();
+        enabled_restoration.types = [2, 0, 0];
+        enabled_restoration.unit_sizes = Some([64, 64, 64]);
+        for (lf, cd, re) in [
+            (&enabled_loop, &base_cdef, &base_restoration),
+            (&base_loop, &enabled_cdef, &base_restoration),
+            (&base_loop, &indexed_cdef, &base_restoration),
+            (&base_loop, &base_cdef, &enabled_restoration),
+        ] {
+            assert_eq!(
+                apply_in_loop_filters(&mut frame, lf, cd, re),
+                Err(CodecError::Unsupported)
+            );
+            assert_eq!(frame, initial, "unsupported filtering mutated pixels");
+        }
     }
 
     #[test]
